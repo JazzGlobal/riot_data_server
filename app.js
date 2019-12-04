@@ -26,9 +26,17 @@ app.get('/matches/account/:accountId', (req, res) => {
     })
 })
 
+// Returns Game Information By Match ID
 app.get('/matches/match/:matchId', (req, res) => {
     api.GetMatchByGameId(req.params.matchId, (matchData) => {
         res.send(matchData)
+    })
+})
+
+// Returns Champion Mastery points for given summoner.
+app.get('/summoner/championmastery/:summonerId', (req, res) => {
+    api.GetChampionMasteries(req.params.summonerId, (masteryData) => {
+        res.send(masteryData)
     })
 })
 
