@@ -19,6 +19,18 @@ app.get('/summoner/account/name/:name', (req, res) => {
     })
 })
 
+// Returns Match List by Account ID.
+app.get('/matches/account/:accountId', (req, res) => {
+    api.GetMatchList(req.params.accountId, (matchData) => {
+        res.send(matchData)
+    })
+})
+
+app.get('/matches/match/:matchId', (req, res) => {
+    api.GetMatchByGameId(req.params.matchId, (matchData) => {
+        res.send(matchData)
+    })
+})
 
 app.listen(3001, ()=> {
     console.log('listening on 3001 ...')

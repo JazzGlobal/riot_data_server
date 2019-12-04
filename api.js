@@ -20,7 +20,29 @@ const api = {
         request(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}${api_key}`, (err, res, body) => {
             if(err) {
                 console.log(err)
-                callback({"error": "Could not find Summer"})
+                callback({"error": "Could not find Summoner"})
+            } else {
+                var bodyData = JSON.parse(body)
+                callback(bodyData)
+            }
+        })
+    },
+    GetMatchList(accountId, callback) {
+        request(`https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${accountId}${api_key}`, (err, res, body) => {
+            if(err) {
+                console.log(err)
+                callback({"error": "Could not find Matches"})
+            } else {
+                var bodyData = JSON.parse(body)
+                callback(bodyData)
+            }
+        })
+    }, 
+    GetMatchByGameId(matchId, callback) {
+        request(`https://na1.api.riotgames.com/lol/match/v4/matches/${matchId}${api_key}`, (err, res, body) => {
+            if(err) {
+                console.log(err)
+                callback({"error": "Could not find Match"})
             } else {
                 var bodyData = JSON.parse(body)
                 callback(bodyData)
