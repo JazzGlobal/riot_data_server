@@ -1,7 +1,7 @@
 var request = require('request'),
-     api_key = '?api_key=RGAPI-f2e9b8dd-dc37-4e78-9813-38a9afa7214a'
+     api_key = '?api_key=RGAPI-49506711-0958-403b-aa1e-764ef9f3aaba'
 
-const api = {
+const Profile = {
     
     // Returns Summoner Account using a specified Account ID.     
     GetSummonerByAccountId(accountId, callback){
@@ -64,4 +64,4 @@ const api = {
         })
     }
 }
-module.exports = api
+module.exports = Profile
