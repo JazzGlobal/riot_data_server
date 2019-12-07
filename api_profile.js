@@ -1,11 +1,11 @@
 var request = require('request'),
-     api_key = '?api_key=RGAPI-49506711-0958-403b-aa1e-764ef9f3aaba'
+    Auth = require('./api_credentials')
 
 const Profile = {
     
     // Returns Summoner Account using a specified Account ID.     
     GetSummonerByAccountId(accountId, callback){
-        request(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-account/${accountId}${api_key}`, (err, res, body) => {
+        request(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-account/${accountId}${Auth.API_KEY}`, (err, res, body) => {
             if(err){
                 console.log(err)
                 callback({"error": "Could not find Summoner."})
@@ -17,7 +17,7 @@ const Profile = {
     },
     // Returns Summoner Account using a specified Summoner Name.     
     GetSummonerByName(summonerName, callback){
-        request(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}${api_key}`, (err, res, body) => {
+        request(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}${Auth.API_KEY}`, (err, res, body) => {
             if(err) {
                 console.log(err)
                 callback({"error": "Could not find Summoner"})
@@ -29,7 +29,7 @@ const Profile = {
     },
     // Returns Match List by Account ID.
     GetMatchList(accountId, callback) {
-        request(`https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${accountId}${api_key}`, (err, res, body) => {
+        request(`https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/${accountId}${Auth.API_KEY}`, (err, res, body) => {
             if(err) {
                 console.log(err)
                 callback({"error": "Could not find Matches"})
@@ -41,7 +41,7 @@ const Profile = {
     }, 
     // Returns Game Information By Match ID
     GetMatchByGameId(matchId, callback) {
-        request(`https://na1.api.riotgames.com/lol/match/v4/matches/${matchId}${api_key}`, (err, res, body) => {
+        request(`https://na1.api.riotgames.com/lol/match/v4/matches/${matchId}${Auth.API_KEY}`, (err, res, body) => {
             if(err) {
                 console.log(err)
                 callback({"error": "Could not find Match"})
@@ -53,7 +53,7 @@ const Profile = {
     },
     // Returns Champion Mastery points for given summoner.
     GetChampionMasteries(summonerId, callback) {
-        request(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${summonerId}${api_key}`, (err, res, body) => {
+        request(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${summonerId}${Auth.API_KEY}`, (err, res, body) => {
             if(err) {
                 console.log(err)
                 callback({"error": "Could not find Champion Masteries"})
