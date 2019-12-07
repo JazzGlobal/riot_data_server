@@ -2,6 +2,7 @@
 var express = require('express'),
     test_id = 'RF-7GQaooWZPFs-QFXpgAXkxO3X7EC0fKo6tnvG7Gr3Y8VQ',
     Profile = require('./api_profile'),
+    Champion = require('./api_champion'),
     app = express()
 
 
@@ -37,6 +38,20 @@ app.get('/matches/match/:matchId', (req, res) => {
 app.get('/summoner/championmastery/:summonerId', (req, res) => {
     Profile.GetChampionMasteries(req.params.summonerId, (masteryData) => {
         res.send(masteryData)
+    })
+})
+
+// Champion Data End Points =======================================================================
+
+app.get('/champion/champions', (req, res) => {
+    Champion.GetAllChampions( (championData) => {
+        res.send(championData)
+    })
+})
+
+app.get('/champion/:id', (req, res) => {
+    Champion.GetChampionById(req.params.id, (championData) => {
+        res.send(championData)
     })
 })
 
