@@ -51,6 +51,19 @@ const Profile = {
             }
         })
     },
+    GetLast10Matches(accountId, callback) {
+        this.GetMatchList(accountId, (matchData) => {
+            var result = []
+            if(matchData['matches'].length >= 10){
+                for (var i = 0; i < 10; i++){
+                    result.push(matchData['matches'][i])
+                }
+            } else {
+                callback({'Error': 'Not Enough Games'})
+            }
+            callback(result)
+        })
+    },
     // Returns Champion Mastery points for given summoner.
     GetChampionMasteries(summonerId, callback) {
         request(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${summonerId}${Auth.API_KEY}`, (err, res, body) => {

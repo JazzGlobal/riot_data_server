@@ -34,6 +34,12 @@ app.get('/matches/match/:matchId', (req, res) => {
     })
 })
 
+app.get('/matches/match/last10/:accountid', (req, res) => {
+    Profile.GetLast10Matches(req.params.accountid, (matchData) => {
+        res.send(matchData)
+    })
+})
+
 // Returns Champion Mastery points for given summoner.
 app.get('/summoner/championmastery/:summonerId', (req, res) => {
     Profile.GetChampionMasteries(req.params.summonerId, (masteryData) => {
